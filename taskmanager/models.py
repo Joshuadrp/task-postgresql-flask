@@ -6,6 +6,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(25), unique=True, nullable=False)
     tasks = db.relationship("Task", backref="category", cascade="all, delete", lazy=True)
+    # the line above will delete all related tasks when a category is deleted!!
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
